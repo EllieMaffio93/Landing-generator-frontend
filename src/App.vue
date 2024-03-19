@@ -3,12 +3,9 @@ import { computed, ref, onMounted } from 'vue';
 import draggable from 'vuedraggable'
 import axios from 'axios';
 
-
-
-
 const DEFAULT_COMPONENT = {
-  CallToAction: {
-    name: "CallToAction",
+  CTA: {
+    name: "CTA",
     props: {
       title: undefined,
       backgroundColor: undefined,
@@ -45,14 +42,32 @@ const DEFAULT_COMPONENT = {
 //     },
 //   }
 
-const layout = ref([]);
-console.log("LAYOUT",layout);
+const exampleLayout = [
+  {
+    name: "Banner",
+    props: {
+      text: undefined,
+      backgroundColor: undefined,
+      color: undefined,
+    },
+  },
+  {
+    name: "CTA",
+    props: {
+      title: undefined,
+      backgroundColor: undefined,
+      color: undefined,
+    },
+  },
+]
+
+const layout = ref(exampleLayout);
 
 onMounted(async () => {
-  const response = await axios.get('http://localhost:3030/landings/65f01dea8d351cd26a309a51');
-  const template = JSON.parse(response.data.template);
-  console.log(template.components);
-  layout.value = template.components;
+  //const response = await axios.get('http://localhost:3030/landings/65f01dea8d351cd26a309a51');
+  //const template = JSON.parse(response.data.template);
+  //console.log(template.components);
+  //layout.value = template.components;
 })
 
 const selectedComponent = ref(null);
@@ -76,7 +91,6 @@ const dragging = ref(false);
 
 <template>
   <div>
-
     <draggable
       :list="layout"
       item-key="id"
@@ -101,7 +115,7 @@ const dragging = ref(false);
     <div class="add-new">
       <select v-model="newComponent">
         <option value="" disabled>Seleziona un componente</option>
-        <option value="CallToAction">CallToAction</option>
+        <option value="CTA">CTA</option>
         <option value="Banner">Banner</option>
       </select>
       <button @click="addNewComponent">Aggiungi</button>

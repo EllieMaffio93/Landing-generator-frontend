@@ -1,32 +1,54 @@
-<template>
-    <div class="banner-container">
-        {{ text }}
-    </div>
-</template>
-
 <script setup>
-const props = defineProps({
-    text: {
+defineProps({
+    title: {
         type: String,
-        default: "Banner",
+        default: "CTA Title",
+    },
+    subtitle: {
+        type: String,
+        required: false,
+        default: "CTA Subtitle",
     },
     backgroundColor: {
         type: String,
-        default: "red",
+        default: "#f5f9ff",
     },
     color: {
         type: String,
-        default: "white",
+        default: "#182aa1",
     },
 })
-
 </script>
+
+<template>
+    <div class="banner-container">
+        <div class="banner-heading">
+            <p class="banner-title">{{ title }}</p>
+            <p class="banner-subtitle">{{ subtitle }}</p>
+        </div>
+    </div>
+</template>
 
 <style>
 .banner-container {
-    width: 100%;
-    height: 50px;
+    display: flex;
+    min-height: 250px;
+    padding: 4rem;
     background-color: v-bind(backgroundColor);
     color: v-bind(color);
+
+    .banner-heading {
+        width: 100%;
+
+        .banner-title {
+            font-size: 2.4rem;
+        }
+
+        .banner-subtitle {
+            font-size: 1.8rem;
+        }
+    }
 }
+
+
 </style>

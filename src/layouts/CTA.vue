@@ -1,31 +1,38 @@
 <template>
     <div class="cta-container">
-        {{ title }}
+        {{ text }}
     </div>
 </template>
 
 <script setup>
-defineProps({
-    title: {
+const props = defineProps({
+    text: {
         type: String,
-        default: "Call to Action",
+        default: "Banner Text",
     },
     backgroundColor: {
         type: String,
-        default: "red",
+        required: false,
+        default: "#4c64f2",
     },
     color: {
         type: String,
-        default: "white",
+        required: false,
+        default: "#fff",
     },
 })
+
 </script>
 
 <style>
 .cta-container {
-    width: 500px;
-    height: 300px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
     background-color: v-bind(backgroundColor);
     color: v-bind(color);
+    font-size: 2rem;
 }
 </style>
