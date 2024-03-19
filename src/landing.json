@@ -1,0 +1,23 @@
+{
+    "title": "Landing di Eleonora",
+    "template": {
+        "components": [
+            {
+                "name": "CallToAction",
+                "props": {
+                    "title": "Clicca qui",
+                    "backgroundColor": "red",
+                    "color": "white"
+                }
+            },
+            {
+                "name": "Banner",
+                "props": {
+                    "text": "La mia landing stupenda",
+                    "backgroundColor": "blue",
+                    "color": "white"
+                }
+            }
+        ]
+    }
+}
