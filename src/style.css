@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
   font-family: "Noto Serif", serif;
 }
@@ -7,3 +13,63 @@
 .debug {
   border: 1px solid black;
 }
+
+.button {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 1.4rem;
+  font-weight: 300;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button-primary {
+  background-color: #55efc4;
+  color: #2d3436;
+}
+
+.button-secondary {
+  padding: 8px 16px;
+  font-size: 1rem;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 3px;
+}
+
+label {
+  
+}
+
+.hover{
+  opacity: 0;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background:#2d3436;
+  position:absolute;
+  top:0;
+  right:0;
+  height:100%;
+  width:100%;
+  transition:all 0.3s;
+
+  button {
+    width: fit-content;
+    margin-bottom: 30px;
+  }
+}
+
+.component {
+  position:relative;
+}
+
+.component:hover .hover{
+  opacity:.7;
+}
+
