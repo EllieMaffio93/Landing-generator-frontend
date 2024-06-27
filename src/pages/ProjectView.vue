@@ -57,12 +57,31 @@ const deleteComponent = (index = -1) => {
   selectedIndex.value = -1;
   selectedComponent.value = null;
 }
+
+const addNewItem = async (newItem) => {
+  selectedComponent.value.props.features.push(newItem);
+  const response = await updateLanding(route.params.id, layout.value);
+  toast.success('Layout aggiornato!');
+}
+
+const deleteItem = async (itemIndex) => {
+  selectedComponent.value.props.features.splice(itemIndex, 1);
+  const response = await updateLanding(route.params.id, layout.value);
+  toast.success('Layout aggiornato!');
+}
 </script>
 
 <template>
   <button @click="router.push(`/dashboard/projects`)">All projects</button>
   <div class="project-view">
-    <Sidebar :selectedComponent="selectedComponent" @addNew="addNewComponent" @save="saveLayout" @delete="deleteComponent"/>
+    <Sidebar
+      :selectedComponent="selectedComponent"
+      @addNew="addNewComponent"
+      @save="saveLayout"
+      @delete="deleteComponent"
+      @addNewItem="addNewItem"
+      @deleteItem="deleteItem"
+    />
 
     <div class="project">
       <draggable
@@ -98,5 +117,6 @@ const deleteComponent = (index = -1) => {
 .project {
   width: 80%;
   flex-basis: 80%;
+  overflow-y: scroll;
 }
 </style>

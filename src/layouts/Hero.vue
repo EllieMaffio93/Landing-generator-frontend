@@ -53,6 +53,10 @@ const classObject = computed(() => {
         'content-reverse': props.imageOrientation === 'left'
     }
 })
+
+const textAlign = computed(() => {
+    return props.imageOrientation === 'left' ? 'right' : 'left';
+})
 </script>
 
 <template>
@@ -62,7 +66,9 @@ const classObject = computed(() => {
                 <p class="hero-title">{{ title }}</p>
                 <p class="hero-subtitle">{{ subtitle }}</p>
             </div>
-            <img v-if="contentImage" :src="contentImage" alt="hero Image" class="hero-image" />
+            <div v-if="contentImage" class="hero-image">
+                <img :src="contentImage" alt="hero Image">
+            </div>
         </div>
         <div class="hover">
             <button class="button button-secondary" @click.stop="$emit('delete')">Elimina</button>
@@ -72,15 +78,15 @@ const classObject = computed(() => {
 
 <style>
 .is-small{
-    height:400px;
+    height: 400px;
 }
 
 .is-medium{
-    height:600px;
+    height: 600px;
 }
 
 .is-large{
-    height:800px;
+    height: 800px;
 }
 
 .content-reverse{
@@ -90,12 +96,14 @@ const classObject = computed(() => {
 .hero-container {
     display: flex;
     justify-content: space-between;
+    align-items:center;
     padding: 4rem;
     background-color: v-bind(backgroundColor);
     color: v-bind(color);
 
     .hero-heading {
-        flex-basis:48%;
+        width: calc(100% / 2);
+        text-align: center;
 
         .hero-title {
             font-size: 2.4rem;
@@ -105,9 +113,12 @@ const classObject = computed(() => {
             font-size: 1.8rem;
         }
     }
-    .hero-image{
-        flex-basis:48%;
-        object-fit: cover;
+    .hero-image {
+        width: calc(100% / 2);
+
+        img {
+            max-width: 80%;
+        }
     }
 }
 

@@ -78,12 +78,35 @@ export const DEFAULT_COMPONENT = {
                 type: "text",
                 value: "Features Subtitle",
             },
+            backgroundColor: {
+                type: "text",
+                value: "#f5f9ff",
+            },
+            textColor : {
+                type: "text",
+                value: "#182aa1",
+            },
+            cardBackgroundColor : {
+                type: "text",
+                value: "#ffffff",
+            },
+            cardTextColor : {
+                type: "text",
+                value: "#000000",
+            },
             features: {
                 type: "list",
+                min: 2,
+                max: 6,
                 value: [
                     {
                         title: "Feature 1",
                         description: "Feature 1 Description",
+                        icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+                    },
+                    {
+                        title: "Feature 2",
+                        description: "Feature 2 Description",
                         icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
                     },
                 ],

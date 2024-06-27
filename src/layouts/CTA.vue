@@ -51,7 +51,7 @@ const props = defineProps({
 
 <style>
 .cta-container {
-    height: 75px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,6 +68,7 @@ const props = defineProps({
         color: v-bind(buttonTextColor);
         border-radius: 3px;
         border: 0;
+        margin-top:1rem;
 
         a {
             text-decoration: none;

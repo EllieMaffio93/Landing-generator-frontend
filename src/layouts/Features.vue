@@ -1,4 +1,6 @@
 <script setup>
+import { computed } from 'vue';
+
 
 const props = defineProps({
     title: {
@@ -8,6 +10,18 @@ const props = defineProps({
     subtitle: {
         type: String,
         required: false,
+    },
+    backgroundColor: {
+        type: String,
+    },
+    textColor: {
+        type: String,
+    },
+    cardBackgroundColor: {
+        type: String,
+    },
+    cardTextColor: {
+        type: String,
     },
     features: {
         type: Array,
@@ -20,6 +34,19 @@ const props = defineProps({
             },
         ],
     },
+})
+const emit = defineEmits(["delete"]);
+
+
+const columnNumber = computed(() => {
+  const featuresNumber = props.features.length;
+  if (featuresNumber % 2 === 0) {
+      return 2;
+  } else if (featuresNumber % 3 === 0) {
+      return 3;
+  } else {
+      return 3;
+  }
 })
 </script>
 
@@ -34,6 +61,11 @@ const props = defineProps({
         <p>{{feature.description}}</p>
       </div>
     </div>
+
+
+    <div class="hover">
+      <button class="button button-secondary" @click.stop="$emit('delete')">Elimina</button>
+    </div>
   </div>
 </template>
 
@@ -41,17 +73,20 @@ const props = defineProps({
 .component {
   padding: 1rem;
   text-align: center;
+  color: v-bind(textColor);
+  background-color: v-bind(backgroundColor);
 }
 
 .features-container{
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(v-bind(columnNumber), 1fr);
   row-gap: 30px;
   column-gap: 40px;
 
   .feature{
-    background-color: #f1f1f1;
+    background-color: v-bind(cardBackgroundColor);
+    color:v-bind(cardTextColor);
     padding: 20px;
     border-radius: 10px;
 
